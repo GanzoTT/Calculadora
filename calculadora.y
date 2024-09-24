@@ -2,67 +2,70 @@
     #include <stdio.h>
 %}
 
-/* Declarar tokens */
+/* declare tokens */
 %token <dval> NUMBER
-%token ADD SUB MUL DIV POW ABS EOL
+%token ADD SUB MUL DIV POW ABS OP CP EOL
 
 %union {
     double dval;
 }
 
-%type <dval> exp term factor
+%type <dval> exp factor term
 
-%%
+%left ADD SUB
+%left MUL DIV
+%right POW
+%left ABS
 
-// Lista de cálculos
-calclist: /* nada */
+%% 
+
+calclist: /* nothing */
     | calclist exp EOL { printf("= %g\n> ", $2); }
-    | calclist EOL { printf("> "); } /* línea en blanco o comentario */
+    | calclist EOL { printf("> "); } /* blank line or a comment */
     ;
 
-// Expresiones (suma y resta)
-exp: term
-    | exp ADD term { $$ = $1 + $3; }
-    | exp SUB term { $$ = $1 - $3; }
-    ;
-
-// Términos (multiplicación, división)
-term: factor
-    | term MUL factor { $$ = $1 * $3; }
-    | term DIV factor {
+exp: factor
+    | exp ADD exp { $$ = $1 + $3; }
+    | exp SUB exp { $$ = $1 - $3; }
+    | exp MUL exp { $$ = $1 * $3; }
+    | exp DIV exp {
         if ($3 == 0) {
-            printf("error: división por cero\n");
-            $$ = 0; // Valor predeterminado en caso de error
+            printf("error: division por cero no existe\n");
+            $$ = 0; // Default value or handle otherwise
         } else {
             $$ = $1 / $3;
         }
     }
-    ;
-
-// Factores (números, absoluto, potencia, y negación)
-factor: NUMBER
-    | ABS factor { $$ = $2 >= 0 ? $2 : -$2; }
-    | factor POW factor {
+    | exp POW exp {
         double base = $1;
         int exponent = (int) $3;
-        $$ = 1;
+        double result = 1;
         for (int i = 0; i < exponent; i++) {
-            $$ *= base;
+            result *= base;
         }
+        $$ = result;
     }
-    | SUB factor { $$ = -$2; }
+    | ABS exp { $$ = $2 >= 0 ? $2 : -$2; }
+    | SUB exp { $$ = -$2; }
     ;
 
-%%
+factor: term
+    | OP exp CP { $$ = $2; }
+    ;
 
-// Función principal
-int main() {
+term: NUMBER
+    ;
+
+%% 
+
+int main()
+{
     printf("> ");
     yyparse();
     return 0;
 }
 
-// Función de manejo de errores
-void yyerror(char *s) {
+void yyerror(char *s)
+{
     fprintf(stderr, "error: %s\n", s);
 }
