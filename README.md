@@ -70,37 +70,36 @@ Este proyecto es una calculadora simple que utiliza **Bison** y **Flex** para el
 
 Entrada:
 
-    > 3 + 4 * 2
-    = 11
-    > (1 + 2) * 3
-    = 9
-    > 2 ^ 3
-    = 8
-    > 10 / 2 - 3
-    = 2
+      > 7*8/3
+      = 18.6667
+      > 1+6*5-2
+      = 29
+      > 2*5/8+4-1
+      = 4.25
+      > 2+3-9+3*1
+      = -1
+
   - Para la gramática inversa (/ , *, -, +):
 
 Entrada:
-
-    > 3 / 4 * 2
-    = 1.5
-    > (1 - 2) * 3
-    = -3
-    > 10 + 2 - 3
-    = 9
-    > 2 ^ 3
-    = 8
+      
+      > 7/4*3+2
+      = 8.75
+      > 8*3/6+2*4
+      = 12
+      > 2+1+7/2*7-8*3
+      = -15
 
   - Para la gramática con menor precedencia de paréntesis:
 
 Entrada:
-
-    > 3 + (4 * 2)
-    = 11
-    > 1 - (2 * 3)
-    = -5
-    > 10 / (2 + 3)
-    = 2
+   
+      > 3 + (4 * 2)
+      = 11
+      > 1 - (2 * 3)
+      = -5
+      > 10 / (2 + 3)
+      = 2
 
 
 
