@@ -1,7 +1,7 @@
 # Integrantes
-1.Franco Comas
-2.David Martinez
-3.Anthony Barahona
+   1. Franco Comas
+   2. David Martinez
+   3. Anthony Barahona
 
 # Calculadora en Flex y Bison
 
@@ -13,7 +13,7 @@ Este proyecto es una calculadora simple que utiliza **Bison** y **Flex** para el
 - **Gramática Inversa**: Permite evaluar expresiones en orden inverso.
 - **Paréntesis**: Manejo de expresiones dentro de paréntesis con menor precedencia.
 - **Errores de Entrada**: Manejo de errores para entradas no válidas.
-- 
+  
 ## Guía para la Creación del Archivo `calculadora.l` y `calculadora.y`
 
 ### Descarga de los Archivos
