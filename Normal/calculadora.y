@@ -31,7 +31,7 @@ exp: factor
     | exp DIV exp {
         if ($3 == 0) {
             printf("error: division por cero no existe\n");
-            $$ = 0; // Default value or handle otherwise
+            $$ = 0; 
         } else {
             $$ = $1 / $3;
         }
