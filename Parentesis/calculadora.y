@@ -2,7 +2,7 @@
     #include <stdio.h>
 %}
 
-/* declare tokens */
+/* declaración de los tokens */
 %token <dval> NUMBER
 %token ADD SUB MUL DIV POW ABS OP CP EOL
 
@@ -20,9 +20,9 @@
 
 %% 
 
-calclist: /* nothing */
+calclist: 
     | calclist exp EOL { printf("= %g\n> ", $2); }
-    | calclist EOL { printf("> "); } /* blank line or a comment */
+    | calclist EOL { printf("> "); } 
     ;
 
 exp: factor
