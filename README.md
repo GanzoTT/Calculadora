@@ -1,8 +1,3 @@
-# Integrantes
-   1. Franco Comas
-   2. David Martinez
-   3. Anthony Barahona
-
 # Calculadora en Flex y Bison
 
 Este proyecto es una calculadora simple que utiliza **Bison** y **Flex** para el análisis sintáctico y la tokenización de expresiones matemáticas. Soporta operaciones básicas como suma, resta, multiplicación, división, potenciación. También permite la evaluación de expresiones dentro de paréntesis con presedencia normal, inversa y menor en los parentesis.
